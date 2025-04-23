@@ -21,15 +21,41 @@ session_start();
     footer { background-color: #004085; color: #fff; padding: 30px 0; }
     footer a { color: #ffc107; text-decoration: none; }
     footer a:hover { text-decoration: underline; }
-    .contact-info { margin-top: 20px; }
-    .contact-info h4 { color: #004085; }
+    .contact-info { margin-top: 20px; 
+    }
+    .contact-info h4 { font-size: 1.5rem; margin-bottom: 10px; color: #004085; }
+    .contact-info p { font-size: 1rem; color: #555; }
+    .contact-info i { color: #004085; font-size: 1.5rem; margin-right: 10px; }
+    .contact-info .col-md-4 { text-align: center; }
     .contact-form { margin-top: 40px; }
+    .contact-form .card {
+  border-radius: 12px;
+  background-color: #ffffff;
+}
+
+.contact-form .form-control {
+  border-radius: 8px;
+  transition: all 0.2s ease-in-out;
+}
+
+.contact-form .form-control:focus {
+  border-color: #004085;
+  box-shadow: 0 0 0 0.2rem rgba(0,64,133,.25);
+}
+
+    .contact-container {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
   </style>
 </head>
 <body>
   <?php include 'header.php'; ?>
   
-  <div class="container mt-5">
+  <div class="container mt-5 contact-container">
     <h1>Contact Us</h1>
     <p>If you have any questions, please feel free to reach out. You can contact us using any of the methods below or fill out the contact form.</p>
     
@@ -51,31 +77,42 @@ session_start();
     
     <!-- Contact Form -->
     <div class="row contact-form">
-      <div class="col-md-8 offset-md-2">
-        <h4><i class="fas fa-paper-plane"></i> Send Us a Message</h4>
+  <div class="col-md-10 offset-md-1">
+    <div class="card shadow-sm border-0">
+      <div class="card-body p-4">
+        <h4 class="mb-4 text-primary">
+          <i class="fas fa-paper-plane me-2"></i>Send Us a Message
+        </h4>
         <form action="contact_us_process.php" method="POST">
-          <div class="mb-3">
-            <label class="form-label"><i class="fas fa-user"></i> Your Name</label>
-            <input type="text" name="name" class="form-control" placeholder="Enter your name" required>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label"><i class="fas fa-user me-1"></i>Your Name</label>
+              <input type="text" name="name" class="form-control" placeholder="Enter your name" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label"><i class="fas fa-envelope me-1"></i>Your Email</label>
+              <input type="email" name="email" class="form-control" placeholder="Enter your email" required>
+            </div>
+            <div class="col-12">
+              <label class="form-label"><i class="fas fa-info-circle me-1"></i>Subject</label>
+              <input type="text" name="subject" class="form-control" placeholder="Subject" required>
+            </div>
+            <div class="col-12">
+              <label class="form-label"><i class="fas fa-comment me-1"></i>Message</label>
+              <textarea name="message" class="form-control" rows="5" placeholder="Your message here..." required></textarea>
+            </div>
+            <div class="col-12 text-end">
+              <button type="submit" class="btn btn-primary px-4">
+                <i class="fas fa-paper-plane"></i> Send Message
+              </button>
+            </div>
           </div>
-          <div class="mb-3">
-            <label class="form-label"><i class="fas fa-envelope"></i> Your Email</label>
-            <input type="email" name="email" class="form-control" placeholder="Enter your email" required>
-          </div>
-          <div class="mb-3">
-            <label class="form-label"><i class="fas fa-info-circle"></i> Subject</label>
-            <input type="text" name="subject" class="form-control" placeholder="Subject" required>
-          </div>
-          <div class="mb-3">
-            <label class="form-label"><i class="fas fa-comment"></i> Message</label>
-            <textarea name="message" class="form-control" rows="5" placeholder="Your message here..." required></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary">
-            <i class="fas fa-paper-plane"></i> Send Message
-          </button>
         </form>
       </div>
     </div>
+  </div>
+</div>
+
   </div>
   
   <?php include 'footer.php'; ?>
